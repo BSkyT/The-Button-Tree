@@ -2,19 +2,19 @@ let modInfo = {
 	name: "The Button Tree",
 	id: "Buttons",
 	author: "KillOrDeath",
-	pointsName: "money",
+	pointsName: "Money",
 	modFiles: ["layers.js", "tree.js"],
 
 	discordName: "",
 	discordLink: "",
-	initialStartPoints: new Decimal (10), // Used for hard resets and new players
+	initialStartPoints: new Decimal (0), // Used for hard resets and new players
 	offlineLimit: 1,  // In hours
 }
 
 // Set your version in num and name
 let VERSION = {
 	num: "1.0",
-	name: "Starting",
+	name: "Starting Out",
 }
 
 let changelog = `<h1>Changelog:</h1><br>
@@ -42,8 +42,13 @@ function getPointGen() {
 	if(!canGenPoints())
 		return new Decimal(0)
 
-	let gain = new Decimal(1)
-	
+	let gain = new Decimal(1000)
+	if (player.bm.unlocked) gain = gain.plus(buyableEffect("bm", 11))
+  if (player.bm.unlocked) gain = gain.plus(buyableEffect("bm", 12))
+  if (player.bm.unlocked) gain = gain.plus(buyableEffect("bm", 13))
+  if (player.bm.unlocked) gain = gain.plus(buyableEffect("bm", 21))
+  if (player.bm.unlocked) gain = gain.plus(buyableEffect("bm", 22))
+  if (player.bm.unlocked) gain = gain.plus(buyableEffect("bm", 23))
 	return gain
 }
 
